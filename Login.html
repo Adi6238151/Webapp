@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('A_modern_office_building_with_a_sleek_glass_exteri.png') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #29487d;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            margin-bottom: 15px;
+        }
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-button {
+            background-color: #29487d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-button:hover {
+            background-color: #1f3a6d;
+        }
+        .link-container {
+            margin-top: 20px;
+        }
+        .link-container a {
+            color: #29487d;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+        .header, .logo {
+            position: absolute;
+            top: 20px;
+            font-size: 18px;
+            background: rgba(0, 0, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .header {
+            left: 20px;
+        }
+        .logo {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Name of the platform</div>
+    <div class="logo">LOGO</div>
+    <div class="login-container">
+        <h1>LOGIN PAGE</h1>
+        <div class="input-container">
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="input-container">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <button class="login-button" onclick="login()">Get Started</button>
+        <div class="link-container">
+            <a href="#">Create Account</a>
+            <a href="#">Need Help?</a>
+        </div>
+    </div>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === '1234' && password === '1234') {
+                window.location.href = 'home.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</body>
+</html>

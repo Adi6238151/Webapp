@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Bus Route Optimization Platform - Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            background-color: #29487d;
+            color: white;
+            width: 250px;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .logo {
+            background-color: #5c82d6;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            flex-grow: 1;
+        }
+        .menu li {
+            margin-bottom: 20px;
+        }
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .menu li a:hover {
+            background-color: #3b5998;
+        }
+        .menu li a i {
+            margin-right: 10px;
+        }
+        .submenu {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        .submenu li a {
+            font-size: 14px;
+        }
+        .content {
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow: auto;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('A_modern_office_building_with_a_sleek_glass_exteri.png') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        .topbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+        .topbar a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        .topbar a:hover {
+            text-decoration: underline;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        .search-bar input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+        }
+        .search-bar button {
+            background-color: #5c82d6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #3b5998;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        .stats div {
+            background-color: #5c82d6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .bus-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            z-index: 1;
+        }
+        .bus-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #0000ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            text-align: left;
+            position: relative;
+        }
+        .bus-card h3 {
+            color: #0000ff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .bus-card p {
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .bus-card .download {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .bus-card .download i {
+            margin-left: 5px;
+            cursor: pointer;
+            color: #0000ff;
+        }
+        .bus-card img {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: auto;
+            z-index: 1;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            background-color: #5c82d6;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .footer a:hover {
+            background-color: #3b5998;
+        }
+        .edit-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .edit-buttons i {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">LOGO</div>
+        <ul class="menu">
+            <li>
+                <a href="home.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="#"><i class="fas fa-user"></i> School Bus Administrators</a>
+                <ul class="submenu">
+                    <li><a href="admin.html">School buses</a></li>
+                    <li><a href="student_management.html">Student Management</a></li>
+                    <li><a href="route_optimization.html">Route Optimization</a></li>
+                    <li><a href="geofencing.html">Geofencing</a></li>
+                    <li><a href="bus_driver_management.html">Bus & Driver Management</a></li>
+                    <li><a href="reports.html">Reports</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fas fa-bell"></i> Notification</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li><a href="#"><i class="fas fa-user-circle"></i> Account</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+        </ul>
+        <button class="go-back"><i class="fas fa-arrow-left"></i> Go Back</button>
+    </div>
+    <div class="content">
+        <div class="background"></div>
+        <div class="overlay"></div>
+        <div class="topbar">
+            <a href="home.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="#">Contacts</a>
+            <a href="#">About Us</a>
+        </div>
+        <div class="stats">
+            <div class="search-bar">
+                <input type="text" placeholder="Search bus/route">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div>Total Students Enrolled: 708</div>
+            <div>Total Number of Buses: 14</div>
+        </div>
+        <div class="bus-cards">
+            <div class="bus-card">
+                <h3 contenteditable="true">School bus no/name</h3>
+                <p>Vehicle No:</p>
+                <p>Driver's Name:</p>
+                <p>Number of Students:</p>
+                <p>Seating Capacity:</p>
+                <p>Starting Point:</p>
+                <p>No. of stops:</p>
+                <div class="download" onclick="downloadFile()">Attendance Record: <i class="fas fa-download"></i></div>
+                <div class="edit-buttons">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-save"></i>
+                </div>
+                <img src="path_to_bus_image.png" alt="School Bus Image">
+            </div>
+            <div class="bus-card">
+                <h3 contenteditable="true">School bus no/name</h3>
+                <p>Vehicle No:</p>
+                <p>Driver's Name:</p>
+                <p>Number of Students:</p>
+                <p>Seating Capacity:</p>
+                <p>Starting Point:</p>
+                <p>No. of stops:</p>
+                <div class="download" onclick="downloadFile()">Attendance Record: <i class="fas fa-download"></i></div>
+                <div class="edit-buttons">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-save"></i>
+                </div>
+                <img src="path_to_bus_image.png" alt="School Bus Image">
+            </div>
+            <div class="bus-card">
+                <h3 contenteditable="true">School bus no/name</h3>
+                <p>Vehicle No:</p>
+                <p>Driver's Name:</p>
+                <p>Number of Students:</p>
+                <p>Seating Capacity:</p>
+                <p>Starting Point:</p>
+                <p>No. of stops:</p>
+                <div class="download" onclick="downloadFile()">Attendance Record: <i class="fas fa-download"></i></div>
+                <div class="edit-buttons">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-save"></i>
+                </div>
+                <img src="path_to_bus_image.png" alt="School Bus Image">
+            </div>
+        </div>
+        <div class="footer">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & services</a>
+        </div>
+    </div>
+
+    <script>
+        function downloadFile() {
+            const link = document.createElement('a');
+            link.href = 'dummy_file.txt';
+            link.download = 'dummy_file.txt';
+            link.click();
+        }
+
+        document.querySelectorAll('.fa-save').forEach(saveIcon => {
+            saveIcon.addEventListener('click', () => {
+                const card = saveIcon.closest('.bus-card');
+                const busName = card.querySelector('h3').innerText;
+                console.log(`Saved: ${busName}`);
+                alert(`Saved: ${busName}`);
+            });
+        });
+    </script>
+</body>
+</html>

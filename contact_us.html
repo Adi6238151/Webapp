@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - School Bus Route Optimization Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #29487d;
+            color: white;
+            width: 250px;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .logo {
+            background-color: #5c82d6;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            flex-grow: 1;
+        }
+        .menu li {
+            margin-bottom: 20px;
+        }
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .menu li a:hover {
+            background-color: #3b5998;
+        }
+        .menu li a i {
+            margin-right: 10px;
+        }
+        .submenu {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        .submenu li a {
+            font-size: 14px;
+        }
+        .content {
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('A_modern_office_building_with_a_sleek_glass_exteri.png') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        .topbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+        .topbar a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        .topbar a:hover {
+            text-decoration: underline;
+        }
+        .topbar .logout {
+            margin-left: auto;
+            margin-right: 20px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .topbar .logout:hover {
+            background-color: #e85050;
+        }
+        .content h1 {
+            font-size: 28px;
+            color: #29487d;
+            margin-top: 50px;
+            z-index: 1;
+        }
+        .content p {
+            font-size: 18px;
+            color: #29487d;
+            max-width: 600px;
+            z-index: 1;
+        }
+        .contact-details, .ticket-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            z-index: 1;
+        }
+        .contact-details h3, .ticket-form h3 {
+            color: #0000ff;
+        }
+        .contact-details p, .ticket-form p {
+            color: #000;
+        }
+        .ticket-form input, .ticket-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .ticket-form button {
+            background-color: #5c82d6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .ticket-form button:hover {
+            background-color: #3b5998;
+        }
+        .footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: auto;
+            z-index: 1;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            background-color: #5c82d6;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .footer a:hover {
+            background-color: #3b5998;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">LOGO</div>
+        <ul class="menu">
+            <li>
+                <a href="home.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="#"><i class="fas fa-user"></i> School Bus Administrators</a>
+                <ul class="submenu">
+                    <li><a href="admin.html">School buses</a></li>
+                    <li><a href="student_management.html">Student Management</a></li>
+                    <li><a href="route_optimization.html">Route Optimization</a></li>
+                    <li><a href="geofencing.html">Geofencing</a></li>
+                    <li><a href="bus_driver_management.html">Bus & Driver Management</a></li>
+                    <li><a href="reports.html">Reports</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fas fa-bell"></i> Notification</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li><a href="#"><i class="fas fa-user-circle"></i> Account</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="background"></div>
+        <div class="overlay"></div>
+        <div class="topbar">
+            <a href="home.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="contacts.html">Contacts</a>
+            <a href="about_us.html">About Us</a>
+            <a href="login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+        <h1>Contact Us</h1>
+        <div class="contact-details">
+            <h3>Contact Information</h3>
+            <p>Email: support@transight.com</p>
+            <p>Phone: +1-234-567-890</p>
+            <p>Address: 1234 Street Name, City, Country</p>
+        </div>
+        <div class="ticket-form">
+            <h3>Raise a Ticket</h3>
+            <form action="submit_ticket.php" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" rows="5" placeholder="Describe your issue" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="footer">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & services</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Bus Route Optimization Platform - Student Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            background-color: #29487d;
+            color: white;
+            width: 250px;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .logo {
+            background-color: #5c82d6;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            flex-grow: 1;
+        }
+        .menu li {
+            margin-bottom: 20px;
+        }
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .menu li a:hover {
+            background-color: #3b5998;
+        }
+        .menu li a i {
+            margin-right: 10px;
+        }
+        .submenu {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        .submenu li a {
+            font-size: 14px;
+        }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow: auto;
+            position: relative;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('A_modern_office_building_with_a_sleek_glass_exteri.png') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+        .topbar a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        .topbar a:hover {
+            text-decoration: underline;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        .stats div {
+            background-color: #5c82d6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+        }
+        .search-bar button {
+            background-color: transparent;
+            border: none;
+            color: #5c82d6;
+            cursor: pointer;
+            padding: 0;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .student-info {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #0000ff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+        }
+        .student-info h3 {
+            color: #0000ff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .student-info p {
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .student-info .icon {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .student-info .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .map {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #0000ff;
+            border-radius: 10px;
+            padding: 20px;
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+        #map {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+        }
+        .details {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #0000ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .details p {
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: auto;
+            z-index: 1;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            background-color: #5c82d6;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .footer a:hover {
+            background-color: #3b5998;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">LOGO</div>
+        <ul class="menu">
+            <li>
+                <a href="home.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="admin.html"><i class="fas fa-user"></i> School Bus Administrators</a>
+                <ul class="submenu">
+                    <li><a href="admin.html">School buses</a></li>
+                    <li><a href="student_management.html" class="active">Student Management</a></li>
+                    <li><a href="route_optimization.html">Route Optimization</a></li>
+                    <li><a href="#">Geofencing</a></li>
+                    <li><a href="#">Bus & Driver Management</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fas fa-bell"></i> Notification</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li><a href="#"><i class="fas fa-user-circle"></i> Account</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+        </ul>
+        <button class="go-back"><i class="fas fa-arrow-left"></i> Go Back</button>
+    </div>
+    <div class="content">
+        <div class="background"></div>
+        <div class="topbar">
+            <a href="home.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="#">Contacts</a>
+            <a href="#">About Us</a>
+        </div>
+        <div class="stats">
+            <div class="search-bar">
+                <input type="text" placeholder="students by name/class/route">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div>Filter: (Class, Route)</div>
+            <div>Total Students Enrolled: 708</div>
+            <a href="add_student.html"><div class="btn-add"><i class="fas fa-plus"></i></div></a>
+        </div>
+        <div class="main-content">
+            <div class="top-section">
+                <div class="student-info">
+                    <h3>STUDENT ID</h3>
+                    <div class="icon"><i class="fas fa-user-circle" style="font-size: 50px; color: #ffcc00;"></i></div>
+                    <p>Student Name:</p>
+                    <p>Address:</p>
+                    <p>Contact No:</p>
+                    <p>Class No:</p>
+                    <p>Parents Name:</p>
+                    <p>Bus ID/No:</p>
+                    <p>Route ID:</p>
+                    <p>Pick Up Point:</p>
+                    <div class="download">Attendance Record: <i class="fas fa-download"></i></div>
+                    <div class="actions">
+                        <i class="fas fa-edit btn-edit" id="edit-student"></i>
+                        <i class="fas fa-trash btn-delete"></i>
+                    </div>
+                </div>
+                <div class="map" id="map"></div>
+            </div>
+            <div class="details">
+                <p>No. of other students from the pick up point:</p>
+                <p>No. of seats:</p>
+                <p>Vehicle No:</p>
+                <p>Drivers Name:</p>
+                <p>Average Distance Covered:</p>
+                <p>Total Distance:</p>
+                <p>Pick Up Time:</p>
+                <p>Drop off Time:</p>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & services</a>
+        </div>
+    </div>
+
+    <!-- Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
+    <script>
+        let map;
+        let busMarker;
+
+        function initMap() {
+            const initialPosition = { lat: 40.7128, lng: -74.0060 }; // New York City coordinates
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: initialPosition,
+                zoom: 12
+            });
+
+            busMarker = new google.maps.Marker({
+                position: initialPosition,
+                map: map,
+                title: "School Bus",
+                icon: {
+                    url: "https://img.icons8.com/emoji/48/000000/bus-emoji.png", // Example bus icon
+                    scaledSize: new google.maps.Size(30, 30)
+                }
+            });
+        }
+
+        document.getElementById('edit-student').addEventListener('click', () => {
+            const newPosition = { lat: 34.0522, lng: -118.2437 }; // Los Angeles coordinates
+            map.setCenter(newPosition);
+            busMarker.setPosition(newPosition);
+        });
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
